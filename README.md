@@ -10,3 +10,7 @@ This project is built server with Zend Server 8.5
 * Auto update
 * Public folder
 * mod-rewrite enabled
+
+#### MySQL defaults
+username: root
+password: root
