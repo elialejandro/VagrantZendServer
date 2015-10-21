@@ -13,6 +13,8 @@ Vagrant.configure(2) do |config|
   
   config.vm.network "private_network", ip: "192.168.56.105"
   # config.vm.network "public_network"
+  
+  config.vm.synced_folder "public", "/var/www/html"
 
   config.vm.provider "virtualbox" do |vb|
     #vb.gui = true

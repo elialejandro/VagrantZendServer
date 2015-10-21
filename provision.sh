@@ -17,8 +17,12 @@ sudo echo "deb http://repos.zend.com/zend-server/8.5/deb_apache2.4 server non-fr
 chmod 644 /etc/apt/sources.list
 sudo wget http://repos.zend.com/zend.key -O- | sudo apt-key add -
 apt-get update
-apt-get install -y zend-server-php-5.6
 
+# Install Zend Server
+apt-get install -y zend-server-php-5.6
+echo 'export PATH=$PATH:/usr/local/zend/bin' >> /etc/profile.d/zend-server.sh
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/zend/lib' >> /etc/profile.d/zend-server.sh
+source /etc/profile.d/zend-server.sh
 
 ################################################################################
 # Everything below this line should only need to be done once
@@ -51,10 +55,10 @@ echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT 
 echo "GRANT PROXY ON ''@'' TO 'root'@'%' WITH GRANT OPTION" | mysql -u root --password=root
 
 # Cleanup the default HTML file created by Apache
-rm -r /var/www/html
+#rm -r /var/www/html
 
 # Create a symbolic link to htdocs folder host
-ln -s /vagrant/public /var/www/html
+#ln -s /vagrant/public /var/www/html
 
 
 # Restart Services
